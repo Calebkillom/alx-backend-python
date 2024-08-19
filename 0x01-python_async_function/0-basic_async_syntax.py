@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-""" The basics of async """"
+"""
+Created on Mon Aug 19 23:13:00 2024
+
+@Author: Caleb Kilonzi
+"""
 import asyncio
 import random
 
