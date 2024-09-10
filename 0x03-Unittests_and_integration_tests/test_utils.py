@@ -6,8 +6,10 @@ Created on Teus Sep 10 21:57:00 2024
 @Author: Caleb Kilonzi
 """
 import unittest
+from unittest.mock import patch, Mock
 from parameterized import parameterized
-from utils import access_nested_map
+from typing import Mapping
+from utils import access_nested_map, get_json
 
 
 class TestAccessNestedMap(unittest.TestCase):
@@ -34,16 +36,15 @@ class TestAccessNestedMap(unittest.TestCase):
 
 
 class TestGetJson(unittest.TestCase):
-    """
-    Test class for get_json
-    """
+    """Test case for the get_json function."""
+
     @parameterized.expand([
-            ("http://example.com", {"payload": True}),
-            ("http://holberton.io", {"payload": False})
+        ("http://example.com", {"payload": True}),
+        ("http://holberton.io", {"payload": False}),
     ])
-	def test_get_json(self, test_url: str, test_payload: Mapping) -> None:
-		"""Test that get_json returns the expected result."""
-		mock_response = Mock()
+    def test_get_json(self, test_url: str, test_payload: Mapping) -> None:
+        """Test that get_json returns the expected result."""
+        mock_response = Mock()
         mock_response.json.return_value = test_payload
 
         with patch("requests.get", return_value=mock_response) as mock_get:
