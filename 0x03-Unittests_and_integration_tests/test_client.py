@@ -31,10 +31,6 @@ class TestGithubOrgClient(unittest.TestCase):
         mock_get_json.assert_called_once_with(expected_url)
         self.assertEqual(result, mock_response)
 
-    @parameterized.expand([
-        ("google", "https://api.github.com/orgs/google/repos"),
-        ("abc", "https://api.github.com/orgs/abc/repos"),
-    ])
     def test_public_repos_url(self):
         mock_payload = {
             'repos_url': 'https://api.github.com/orgs/test_org/repos'
